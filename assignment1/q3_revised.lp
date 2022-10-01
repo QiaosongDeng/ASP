@@ -3,7 +3,9 @@
 
 
 #show schedule/3.
-#show precede/2.
+%#show precede/2.
+%#show finished/1.
+%#show unfinished/0.
 
 {schedule(Session,Time,Room)} :-
     session(Session),
@@ -36,4 +38,17 @@ Time1 < Time2 :-
     schedule(Session2,Time2,Room2),
     precede(Session1,Session2),
     Session1 != Session2.
+
+
+% all sessions must be arranged.
+finished(Session):- schedule(Session,Time,Room), 
+    session(Session),
+    time(Time),
+    room(Room). 
+
+unfinished :- 
+    not finished(Session),
+    session(Session). 
+
+:- unfinished.
        
