@@ -98,18 +98,19 @@ at(lift,F,T+1):-
 
 %constraints things that shouldn't happen
 
-:- up(lift,From,To,T), up(lift,From,To1,T), To != To1, floor(To1), floor(From).
-:- up(lift,From,To,T), up(lift,From1,To,T), From != From1,
-   floor(From1), floor(From).
+:- up(lift,From,To,T), up(lift,From,To1,T), To != To1, floor(To1), floor(From).%one elevator cant run in to directions
+:- up(lift,From,To,T), up(lift,From1,To,T), From != From1, 
+   floor(From1), floor(From).%one elevator cant from two floors
 
 :- down(lift,From,To,T), down(lift,From,To1,T), To != To1,
    floor(To1), floor(From).
 
 :- down(lift,From,To,T), down(lift,From1,To,T), From != From1,
-   floor(From1), floor(To), floor(From).
+   floor(From1), floor(To), floor(From).%one elevator cant run in to directions
 
+%revised
 :- up(lift,From,To,T), down(lift,From,To1,T), To != To1,
-   floor(To1), floor(To), floor(From).
+   floor(To1), floor(To), floor(From).%one elevator cant from two floors
 
 
 
