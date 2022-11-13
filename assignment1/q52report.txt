@@ -1,0 +1,234 @@
+% Permutation pattern matching .
+
+input : 
+      for some permutation T of 1,... ,n , the set t/2 of
+          pairs (I , E) such that E is the I-th element of T ;
+      for some permutation P of 1,... ,k , the set p/2 of
+          pairs (I , E) such that E is the I-th element of P ;
+      the length k of P .
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+TEST Device info:
+    CPU: Intel® Core™ i7-8750H Processor
+        9M Cache, up to 4.10 GHz
+    RAM Size: 8GB*2
+    Operating System: Windows 10
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Test Case 1: T = (5 ,3 ,1 ,4 ,2) , P = (2 ,3 ,1).
+Input: 
+    t(1 ,5; 2 ,3; 3 ,1; 4 ,4; 5 ,2).
+    p(1 ,2; 2 ,3; 3 ,1).
+    #const k =3.
+Results:
+    clingo version 5.6.1
+    Reading from q52.lp
+    Solving...
+    Answer: 1
+    subseq(3) subseq(4) subseq(2)
+    SATISFIABLE
+
+    Models       : 1
+    Calls        : 1
+    Time         : 0.004s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+    CPU Time     : 0.000s
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Test Case 2: T = (5 ,3 ,1 ,4 ,2) , P = (3 ,2 ,1).
+Input: 
+    t(1 ,5; 2 ,3; 3 ,1; 4 ,4; 5 ,2).
+    p(1 ,3; 2 ,2; 3 ,1).
+    #const k =3.
+Results:
+    clingo version 5.6.1
+    Reading from q52.lp
+    Solving...
+    Answer: 1
+    subseq(5) subseq(3) subseq(2)
+    Answer: 2
+    subseq(5) subseq(3) subseq(1)
+    Answer: 3
+    subseq(5) subseq(4) subseq(2)
+    SATISFIABLE
+
+    Models       : 3
+    Calls        : 1
+    Time         : 0.005s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+    CPU Time     : 0.000s
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Test Case 3: T = (1,2,3,4,5,6,7,8) , P = (4, 3 ,2 ,1).
+Input: 
+    t(1 ,1; 2 ,2; 3 ,3; 4 ,4; 5 ,5; 6, 6; 7, 7; 8, 8).
+    p(1 ,4; 2 ,3; 3 ,2; 4, 1).
+    #const k =4.
+Results:
+    clingo version 5.6.1
+    Reading from q52.lp
+    Solving...
+    UNSATISFIABLE
+
+    Models       : 0
+    Calls        : 1
+    Time         : 0.002s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+    CPU Time     : 0.016s
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Test Case 4: T = (1,2,3,4,5,6,7,8) , P = (1, 2 ,3 ,4).
+Input: 
+    t(1 ,1; 2 ,2; 3 ,3; 4 ,4; 5 ,5; 6, 6; 7, 7; 8, 8).
+    p(1 ,1; 2 ,2; 3 ,3; 4, 4).
+    #const k =4.
+Results:
+    clingo version 5.6.1
+    Reading from q52.lp
+    Solving...
+    Answer: 1
+    subseq(1) subseq(2) subseq(7) subseq(8)
+    Answer: 2
+    subseq(1) subseq(2) subseq(6) subseq(8)
+    Answer: 3
+    subseq(1) subseq(2) subseq(6) subseq(7)
+    Answer: 4
+    subseq(1) subseq(3) subseq(7) subseq(8)
+    Answer: 5
+    subseq(1) subseq(3) subseq(6) subseq(8)
+    Answer: 6
+    subseq(1) subseq(3) subseq(6) subseq(7)
+    Answer: 7
+    subseq(2) subseq(3) subseq(7) subseq(8)
+    Answer: 8
+    subseq(2) subseq(3) subseq(6) subseq(8)
+    Answer: 9
+    subseq(2) subseq(3) subseq(6) subseq(7)
+    Answer: 10
+    subseq(1) subseq(4) subseq(7) subseq(8)
+    Answer: 11
+    subseq(2) subseq(4) subseq(7) subseq(8)
+    Answer: 12
+    subseq(3) subseq(4) subseq(7) subseq(8)
+    Answer: 13
+    subseq(1) subseq(4) subseq(6) subseq(8)
+    Answer: 14
+    subseq(2) subseq(4) subseq(6) subseq(8)
+    Answer: 15
+    subseq(1) subseq(4) subseq(6) subseq(7)
+    Answer: 16
+    subseq(2) subseq(4) subseq(6) subseq(7)
+    Answer: 17
+    subseq(3) subseq(4) subseq(6) subseq(8)
+    Answer: 18
+    subseq(3) subseq(4) subseq(6) subseq(7)
+    Answer: 19
+    subseq(1) subseq(2) subseq(5) subseq(8)
+    Answer: 20
+    subseq(1) subseq(2) subseq(5) subseq(7)
+    Answer: 21
+    subseq(1) subseq(2) subseq(5) subseq(6)
+    Answer: 22
+    subseq(1) subseq(3) subseq(5) subseq(8)
+    Answer: 23
+    subseq(2) subseq(3) subseq(5) subseq(8)
+    Answer: 24
+    subseq(1) subseq(3) subseq(5) subseq(7)
+    Answer: 25
+    subseq(2) subseq(3) subseq(5) subseq(7)
+    Answer: 26
+    subseq(1) subseq(3) subseq(5) subseq(6)
+    Answer: 27
+    subseq(2) subseq(3) subseq(5) subseq(6)
+    Answer: 28
+    subseq(1) subseq(4) subseq(5) subseq(8)
+    Answer: 29
+    subseq(2) subseq(4) subseq(5) subseq(8)
+    Answer: 30
+    subseq(1) subseq(4) subseq(5) subseq(7)
+    Answer: 31
+    subseq(2) subseq(4) subseq(5) subseq(7)
+    Answer: 32
+    subseq(3) subseq(4) subseq(5) subseq(8)
+    Answer: 33
+    subseq(3) subseq(4) subseq(5) subseq(7)
+    Answer: 34
+    subseq(1) subseq(4) subseq(5) subseq(6)
+    Answer: 35
+    subseq(2) subseq(4) subseq(5) subseq(6)
+    Answer: 36
+    subseq(3) subseq(4) subseq(5) subseq(6)
+    Answer: 37
+    subseq(1) subseq(5) subseq(7) subseq(8)
+    Answer: 38
+    subseq(2) subseq(5) subseq(7) subseq(8)
+    Answer: 39
+    subseq(3) subseq(5) subseq(7) subseq(8)
+    Answer: 40
+    subseq(1) subseq(5) subseq(6) subseq(8)
+    Answer: 41
+    subseq(2) subseq(5) subseq(6) subseq(8)
+    Answer: 42
+    subseq(1) subseq(5) subseq(6) subseq(7)
+    Answer: 43
+    subseq(2) subseq(5) subseq(6) subseq(7)
+    Answer: 44
+    subseq(3) subseq(5) subseq(6) subseq(8)
+    Answer: 45
+    subseq(3) subseq(5) subseq(6) subseq(7)
+    Answer: 46
+    subseq(4) subseq(5) subseq(7) subseq(8)
+    Answer: 47
+    subseq(4) subseq(5) subseq(6) subseq(8)
+    Answer: 48
+    subseq(4) subseq(5) subseq(6) subseq(7)
+    Answer: 49
+    subseq(1) subseq(2) subseq(4) subseq(8)
+    Answer: 50
+    subseq(1) subseq(2) subseq(4) subseq(7)
+    Answer: 51
+    subseq(1) subseq(2) subseq(4) subseq(6)
+    Answer: 52
+    subseq(1) subseq(3) subseq(4) subseq(8)
+    Answer: 53
+    subseq(2) subseq(3) subseq(4) subseq(8)
+    Answer: 54
+    subseq(1) subseq(3) subseq(4) subseq(7)
+    Answer: 55
+    subseq(2) subseq(3) subseq(4) subseq(7)
+    Answer: 56
+    subseq(1) subseq(3) subseq(4) subseq(6)
+    Answer: 57
+    subseq(2) subseq(3) subseq(4) subseq(6)
+    Answer: 58
+    subseq(1) subseq(2) subseq(4) subseq(5)
+    Answer: 59
+    subseq(1) subseq(3) subseq(4) subseq(5)
+    Answer: 60
+    subseq(2) subseq(3) subseq(4) subseq(5)
+    Answer: 61
+    subseq(5) subseq(6) subseq(7) subseq(8)
+    Answer: 62
+    subseq(1) subseq(6) subseq(7) subseq(8)
+    Answer: 63
+    subseq(2) subseq(6) subseq(7) subseq(8)
+    Answer: 64
+    subseq(3) subseq(6) subseq(7) subseq(8)
+    Answer: 65
+    subseq(4) subseq(6) subseq(7) subseq(8)
+    Answer: 66
+    subseq(1) subseq(2) subseq(3) subseq(4)
+    Answer: 67
+    subseq(1) subseq(2) subseq(3) subseq(8)
+    Answer: 68
+    subseq(1) subseq(2) subseq(3) subseq(7)
+    Answer: 69
+    subseq(1) subseq(2) subseq(3) subseq(6)
+    Answer: 70
+    subseq(1) subseq(2) subseq(3) subseq(5)
+    SATISFIABLE
+
+    Models       : 70
+    Calls        : 1
+    Time         : 0.075s (Solving: 0.07s 1st Model: 0.00s Unsat: 0.00s)
+    CPU Time     : 0.016s

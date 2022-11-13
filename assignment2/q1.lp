@@ -1,22 +1,9 @@
+% Planning in Answer Set Programming: the classic Monkey-Bananas Problem.
+
 %Instruction:
 %type clingo a2.lp -c n="steps constraint" in the command line. 
 %special rule: 
 %monkey can open door or close door when carrying the chair.
-
-%Test case
-room(r1,p1). room(r1,p2). room(r1,p3). room(r1,p4). % 4 locations in room r1
-room(r2,q1). room(r2,q2). % 2 locatoins in room r2
-at(monkey,r1,p2,0). %monkey is in room r1 at location p2 initially
-at(chair, r2,q1,0). %chair is in room r2 at location q1 initially
-at(bananas,r1,p4,0). %bananas are in room r1 at p4 initially
-door(r1,p2,r2,q1,closed,0). %there is a door adjacent p2 of r1 and q1 of r2 which is closed initially (p2 and q1 are "door locations")
-% clingo a2.lp -c n=8
-% clingo version 5.6.1
-% Reading from a2.lp
-% Solving...
-% Answer: 1
-% openDoor(monkey,r1,p2,r2,q1,0) walk(monkey,r1,p2,r2,q1,1) pick_up(monkey,r2,q1,2) closeDoor(monkey,r1,p2,r2,q1,4) walk(monkey,r2,q1,r1,p2,3) walk(monkey,r1,p2,p4,5) put_down(monkey,r1,p4,6) climb(monkey,r1,p4,7) bananas(on_monkey,8)
-% SATISFIABLE
 
 #show walk/5.
 #show walk/6.

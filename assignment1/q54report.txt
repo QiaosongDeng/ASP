@@ -1,0 +1,93 @@
+%Towers of Hanoi puzzle
+input：
+    peg list.
+    disk list.
+    initial condition.
+    final condition.
+    step number constraints.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+TEST Device info:
+    CPU: Intel® Core™ i7-8750H Processor
+        9M Cache, up to 4.10 GHz
+    RAM Size: 8GB*2
+    Operating System: Windows 10
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Test 1
+Input: 
+    peg(a;b;c).
+    disk(1..4).
+    init_on(1..4,a).
+    goal_on(1..4,c).
+    #const n=15.
+Results:
+    clingo version 5.6.1
+    Reading from q54.lp
+    Solving...
+    Answer: 1
+    move(3,c,2) move(4,b,1) move(4,c,3) move(2,b,4) move(4,a,5) 
+    move(3,b,6) move(4,b,7) move(1,c,8) move(4,c,9) move(3,a,10) 
+    move(4,a,11) move(2,c,12) move(4,b,13) move(3,c,14) move(4,c,15)
+    SATISFIABLE
+
+    Models       : 1
+    Calls        : 1
+    Time         : 0.010s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+    CPU Time     : 0.000s
+
+%Test 2: change step number less than 15
+Input: 
+    peg(a;b;c).
+    disk(1..4).
+    init_on(1..4,a).
+    goal_on(1..4,c).
+    #const n=14.
+Results:
+    clingo version 5.6.1
+    Reading from q54.lp
+    Solving...
+    UNSATISFIABLE
+
+    Models       : 0
+    Calls        : 1
+    Time         : 0.007s (Solving: 0.00s 1st Model: 0.00s Unsat: 0.00s)
+    CPU Time     : 0.000s
+
+%Test 3: change disk number to 5
+Input: 
+    peg(a;b;c).
+    disk(1..5).
+    init_on(1..5,a).
+    goal_on(1..5,c).
+    #const n=30.
+Results:
+    clingo version 5.6.1
+    Reading from q54.lp
+    Solving...
+    UNSATISFIABLE
+
+    Models       : 0
+    Calls        : 1
+    Time         : 0.035s (Solving: 0.02s 1st Model: 0.00s Unsat: 0.02s)
+    CPU Time     : 0.031s
+
+%Test 3: change disk number to 5, and change step to 31
+Input:     
+    peg(a;b;c).
+    disk(1..5).
+    init_on(1..5,a).
+    goal_on(1..5,c).
+    #const n=31.
+Results:
+    clingo version 5.6.1
+    Reading from q54.lp
+    Solving...
+    Answer: 1
+    move(4,b,2) move(5,c,1) move(5,b,3) move(3,c,4) move(5,a,5) move(4,c,6) move(5,c,7) move(2,b,8) move(5,b,9) move(4,a,10) move(5,a,11) move(3,b,12) move(5,c,13) move(4,b,14) move(5,b,15) move(1,c,16) move(5,a,17) move(4,c,18) move(5,c,19) move(3,a,20) move(5,b,21) move(4,a,22) move(5,a,23) move(2,c,24) move(5,c,25) move(4,b,26) move(5,b,27) move(3,c,28) move(5,a,29) move(4,c,30) move(5,c,31)
+    SATISFIABLE
+
+    Models       : 1
+    Calls        : 1
+    Time         : 0.045s (Solving: 0.03s 1st Model: 0.03s Unsat: 0.00s)
+    CPU Time     : 0.047s
